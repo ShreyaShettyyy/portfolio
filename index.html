@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya | MCA Student & Software Developer</title>
+    <meta name="description" content="Magical forest portfolio of Shreya - MCA Student, Web Developer, and Creative Thinker. Immersive Ghibli-inspired design featuring dual themes, interactive breeze trails, and animated leaf physics.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="forest-theme dark-theme"> <!-- Default to Dark Forest Theme for magical first impression -->
+
+    <!-- Preloader with Ghibli Fantasy Vibe -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-content">
+            <div class="loader-symbol">
+                <i class="fa-solid fa-seedling loader-icon"></i>
+            </div>
+            <div class="loader-logo">SHREYA<span>.</span></div>
+            <div class="loader-bar-bg"><div class="loader-bar" id="loader-bar"></div></div>
+            <div class="loader-percent" id="loader-percent">0%</div>
+            <div class="loader-quote" id="loader-quote">Entering the magical forest...</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor (Leaf Cursor with SVG path) -->
+    <div class="custom-cursor-leaf" id="custom-cursor-leaf">
+        <svg viewBox="0 0 24 24" width="32" height="32">
+            <path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.43,20.22C8.38,20.73 10.37,20.44 12.22,19.33C18.29,15.7 19.86,9.15 19.86,9.15C19.86,9.15 21,5 22,2C19,3 14.85,4.14 14.85,4.14C14.85,4.14 8.3,5.71 4.67,11.78C4.13,12.67 3.76,13.62 3.56,14.6L3.18,13.68C3,13.2 2.76,12.72 2.54,12.25C1.8,10.72 2.37,8.87 3.82,8.04C4.38,7.72 4.97,7.49 5.59,7.39L17,8M12.44,17.21C11.14,18 9.74,18.2 8.39,17.86C10.22,16.03 13.56,12.69 16.5,9.75C16.57,10.43 16.43,11.19 16.09,11.84C15.3,13.33 13.93,16.32 12.44,17.21Z"/>
+        </svg>
+    </div>
+
+    <!-- Atmospheric Mist Layers -->
+    <div class="mist-layer mist-1"></div>
+    <div class="mist-layer mist-2"></div>
+    
+    <!-- Background Canvas (waterfall and background fireflies) -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop src="Where_The_Leaves_Settle.mp3"></audio>
+
+    <!-- Floating Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo magnetic-target">S<span>.</span></a>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link magnetic-target">About</a>
+                <a href="#projects" class="nav-link magnetic-target">Projects</a>
+                <a href="#skills" class="nav-link magnetic-target">Skills</a>
+                <a href="#timeline" class="nav-link magnetic-target">Experience</a>
+                <a href="#certifications" class="nav-link magnetic-target">Certifications</a>
+                <a href="#resume" class="nav-link magnetic-target">Resume</a>
+                <a href="#contact" class="nav-btn magnetic-target">Let's Talk</a>
+                
+                <!-- Music Toggle Button -->
+                <button class="music-toggle-btn magnetic-target" id="music-toggle-btn" aria-label="Toggle Background Music">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle-btn magnetic-target" id="theme-toggle-btn" aria-label="Toggle Forest Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN IMMERSIVE CONTAINER -->
+    <main class="main-content">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section" data-section="hero">
+            <div class="hero-content">
+                <div class="badge-reveal">
+                    <span class="hero-badge"><i class="fa-solid fa-tree"></i> MCA Student | Developer | Creative Thinker</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="line-reveal">SHREYA</span>
+                    <span class="line-reveal accent-text">SOFTWARE DEVELOPER</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Step into a living digital sanctuary blending web development, programming, and elegant design. Currently pursuing MCA, building robust software and beautiful interactive experiences.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary magnetic-target">Explore Projects <i class="fa-solid fa-leaf"></i></a>
+                    <a href="#contact" class="btn btn-secondary magnetic-target">Get in Touch</a>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Scroll down the valley</span>
+            </div>
+        </section>
+
+        <!-- SEPARATIVE DIVISION (SPACER) -->
+        <div class="separator-spacer"></div>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section" data-section="about">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">01 / BOTANICAL ROOT</span>
+                    <h2 class="section-title">The Creative Soul</h2>
+                </div>
+
+                <!-- Bento-Grid Layout -->
+                <div class="bento-grid">
+                    
+                    <!-- Bento Box 1: Philosophy -->
+                    <div class="bento-card bento-intro glass-panel col-span-2">
+                        <h3 class="bento-card-title"><i class="fa-solid fa-feather card-icon"></i> The Philosophy</h3>
+                        <p class="bento-text">
+                            I am a developer who believes coding is a form of art. Balancing my studies as an MCA student with hands-on web development, I aim to build secure, robust backend systems and combine them with fluid, natural frontend interactions.
+                        </p>
+                        <p class="bento-text">
+                            Whether designing simple, efficient algorithms in C or implementing modern interfaces with JavaScript, I strive to make my work neat, accessible, and meaningful. This portfolio is a space reflecting my journey—a digital forest designed to breathe.
+                        </p>
+                    </div>
+
+                    <!-- Bento Box 2: Visual Mood Sticker Board -->
+                    <div class="bento-card bento-mood glass-panel">
+                        <div class="mood-box">
+                            <div class="mood-glow-core"></div>
+                            <div class="mood-emoji-ring">
+                                <i class="fa-solid fa-graduation-cap mood-sticker" style="top: 15%; left: 20%; transform: rotate(-10deg);"></i>
+                                <i class="fa-solid fa-leaf mood-sticker" style="top: 25%; right: 15%; transform: rotate(15deg);"></i>
+                                <i class="fa-solid fa-wind mood-sticker" style="bottom: 25%; left: 25%; transform: rotate(-5deg);"></i>
+                                <i class="fa-solid fa-code mood-sticker" style="bottom: 20%; right: 25%; transform: rotate(8deg);"></i>
+                            </div>
+                            <span class="mood-label">Creative Thinker</span>
+                        </div>
+                    </div>
+
+                    <!-- Bento Box 3: Personality Trait Tags -->
+                    <div class="bento-card bento-traits glass-panel">
+                        <h3 class="bento-card-title">Core Focus</h3>
+                        <div class="traits-cloud">
+                            <span class="trait-tag" style="background-color: var(--accent-blue-soft);">MCA Student</span>
+                            <span class="trait-tag" style="background-color: var(--accent-peach-soft);">Web Developer</span>
+                            <span class="trait-tag" style="background-color: var(--accent-yellow-soft);">Problem Solver</span>
+                            <span class="trait-tag" style="background-color: var(--accent-lavender-soft);">Data Structures</span>
+                            <span class="trait-tag" style="background-color: var(--accent-orange-soft);">Creative Coding</span>
+                        </div>
+                    </div>
+
+                    <!-- Bento Box 4: Interactive Stats -->
+                    <div class="bento-card bento-stats glass-panel col-span-2">
+                        <div class="bento-stats-grid">
+                            <div class="bento-stat-item">
+                                <span class="bento-stat-num">10+</span>
+                                <span class="bento-stat-lbl">Tech Skills</span>
+                            </div>
+                            <div class="bento-stat-item">
+                                <span class="bento-stat-num">3+</span>
+                                <span class="bento-stat-lbl">Key Projects</span>
+                            </div>
+                            <div class="bento-stat-item">
+                                <span class="bento-stat-num">100%</span>
+                                <span class="bento-stat-lbl">Dedication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="projects-section" data-section="projects">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">02 / PORTFOLIO</span>
+                    <h2 class="section-title">Enchanted Projects</h2>
+                </div>
+
+                <!-- Projects Sorting Filter Bar -->
+                <div class="project-filters">
+                    <button class="filter-btn active magnetic-target" data-filter="all">All Projects</button>
+                    <button class="filter-btn magnetic-target" data-filter="web">Web Dev</button>
+                    <button class="filter-btn magnetic-target" data-filter="system">Systems</button>
+                    <button class="filter-btn magnetic-target" data-filter="ml">Machine Learning</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Bank Management System -->
+                    <div class="project-card glass-panel magnetic-target" data-category="system" data-project="bank" data-tilt>
+                        <div class="project-image-wrapper">
+                            <div class="project-overlay"></div>
+                            <div class="project-mock-img" style="background: linear-gradient(135deg, #DFE6E2 0%, #CCD9D2 100%)">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div class="project-tag-list">
+                                <span class="p-tag">C Language</span>
+                                <span class="p-tag">File Handling</span>
+                                <span class="p-tag">Algorithms</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category-label">Systems & Console</span>
+                            <h3 class="project-name">Bank Management System</h3>
+                            <p class="project-description">A robust, menu-driven banking console application in C. Utilizes file handling structures for accounts, logging transactions, and user authentication.</p>
+                            <div class="project-footer">
+                                <span class="read-more">Examine Ledger <i class="fa-solid fa-arrow-right-long"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Foodify -->
+                    <div class="project-card glass-panel magnetic-target" data-category="web" data-project="foodify" data-tilt>
+                        <div class="project-image-wrapper">
+                            <div class="project-overlay"></div>
+                            <div class="project-mock-img" style="background: linear-gradient(135deg, #F5EAE0 0%, #EADAC2 100%)">
+                                <i class="fa-solid fa-bowl-food"></i>
+                            </div>
+                            <div class="project-tag-list">
+                                <span class="p-tag">HTML</span>
+                                <span class="p-tag">CSS</span>
+                                <span class="p-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category-label">Frontend Web Application</span>
+                            <h3 class="project-name">Foodify</h3>
+                            <p class="project-description">A modern food delivery website featuring a responsive, gorgeous UI. Provides a seamless ordering experience, menu sorting, and cart calculations.</p>
+                            <div class="project-footer">
+                                <span class="read-more">Browse Menu <i class="fa-solid fa-arrow-right-long"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: SignBridge -->
+                    <div class="project-card glass-panel magnetic-target" data-category="ml" data-project="signbridge" data-tilt>
+                        <div class="project-image-wrapper">
+                            <div class="project-overlay"></div>
+                            <div class="project-mock-img" style="background: linear-gradient(135deg, #E2ECF5 0%, #C4D7E8 100%)">
+                                <i class="fa-solid fa-hands-asl-interpreting"></i>
+                            </div>
+                            <div class="project-tag-list">
+                                <span class="p-tag">Python</span>
+                                <span class="p-tag">Computer Vision</span>
+                                <span class="p-tag">Machine Learning</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category-label">AI & Computer Vision</span>
+                            <h3 class="project-name">SignBridge</h3>
+                            <p class="project-description">An interactive sign language detection project. Employs computer vision model matching and ML pipelines to translate gestures to text in real-time.</p>
+                            <div class="project-footer">
+                                <span class="read-more">Cross Bridge <i class="fa-solid fa-arrow-right-long"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="skills-section" data-section="skills">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">03 / ARSENAL</span>
+                    <h2 class="section-title">The Botanical Library</h2>
+                </div>
+
+                <div class="skills-grid-new">
+                    <!-- Column 1: Web & Dev -->
+                    <div class="skills-column glass-panel">
+                        <h3 class="column-title"><i class="fa-solid fa-spa"></i> Web & Development</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-brands fa-js"></i> JavaScript</span>
+                                    <span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 85%; background: var(--accent-sage);"></div></div>
+                                <p class="skill-desc">Dynamic DOM engines, Canvas animation vectors, and ES6 applications.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-brands fa-html5"></i> HTML5 & CSS3</span>
+                                    <span class="skill-pct">90%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 90%; background: var(--accent-sage);"></div></div>
+                                <p class="skill-desc">Semantic layouts, responsive flexbox/grid structures, and custom typography.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-solid fa-globe"></i> Web Development</span>
+                                    <span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 80%; background: var(--accent-sage);"></div></div>
+                                <p class="skill-desc">Frontend client architectures, API requests integration, and layout designs.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+                                    <span class="skill-pct">75%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 75%; background: var(--accent-sage);"></div></div>
+                                <p class="skill-desc">Version control workflows, repository management, and branches structure.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Programming -->
+                    <div class="skills-column glass-panel">
+                        <h3 class="column-title"><i class="fa-solid fa-mountain-sun"></i> Core Programming</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-brands fa-java"></i> Java</span>
+                                    <span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 85%; background: var(--accent-olive);"></div></div>
+                                <p class="skill-desc">Object-Oriented design patterns, abstract class hierarchy, and robust program flows.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-solid fa-database"></i> MySQL</span>
+                                    <span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 80%; background: var(--accent-olive);"></div></div>
+                                <p class="skill-desc">Database schema construction, queries execution, table relationships mapping.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-brands fa-python"></i> Python</span>
+                                    <span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 80%; background: var(--accent-olive);"></div></div>
+                                <p class="skill-desc">Scripting files, computer vision land-markings, and model evaluation.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-solid fa-c"></i> C Programming</span>
+                                    <span class="skill-pct">75%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 75%; background: var(--accent-olive);"></div></div>
+                                <p class="skill-desc">CLI modular systems, persistent file management inputs, account ledgers.</p>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name"><i class="fa-solid fa-code"></i> DSA & OOP</span>
+                                    <span class="skill-pct">78%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar" style="width: 78%; background: var(--accent-olive);"></div></div>
+                                <p class="skill-desc">Algorithmic logic implementation, data structure matrices, inheritance, polymorphism.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE/EXPERIENCE SECTION -->
+        <section id="timeline" class="timeline-section" data-section="timeline">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">04 / THE ODYSSEY</span>
+                    <h2 class="section-title">Academic & Development Path</h2>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <!-- Progress Line (GSAP animated) -->
+                    <div class="timeline-progress-line">
+                        <div class="timeline-progress-fill"></div>
+                    </div>
+
+                    <!-- Milestone 1 -->
+                    <div class="timeline-item glass-panel">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date" style="color: var(--accent-purple);">Present</div>
+                        <div class="timeline-content">
+                            <h3 class="milestone-title">MCA Candidate</h3>
+                            <h4 class="milestone-sub">Master of Computer Applications</h4>
+                            <p class="milestone-text">Deepening knowledge in advanced computing fields including Object-Oriented Analysis, Data Structures & Algorithms, Systems Engineering, and Machine Learning.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="timeline-item glass-panel">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date" style="color: var(--accent-blue);">Ongoing</div>
+                        <div class="timeline-content">
+                            <h3 class="milestone-title">Creative Web Developer</h3>
+                            <h4 class="milestone-sub">Independent Projects</h4>
+                            <p class="milestone-text">Creating interactive web experiences and modern user interfaces (e.g., Foodify). Integrating frontend modules, form interactions, and reactive layout models.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="timeline-item glass-panel">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date" style="color: var(--accent-orange);">Foundation</div>
+                        <div class="timeline-content">
+                            <h3 class="milestone-title">Computer Science Fundamentals</h3>
+                            <h4 class="milestone-sub">Systems & Software Core</h4>
+                            <p class="milestone-text">Structured programmatic problem-solving core. Programmed data operations, text processing databases in C, and system utilities using robust OOP principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certifications" class="certifications-section" data-section="certifications">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">05 / ACHIEVEMENTS</span>
+                    <h2 class="section-title">Certifications & Valedictions</h2>
+                </div>
+
+                <div class="certifications-grid">
+                    <!-- Cert 1: Master of Computer Applications -->
+                    <div class="cert-card glass-panel magnetic-target">
+                        <div class="cert-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="cert-title">Master of Computer Applications</h3>
+                        <p class="cert-issuer">Postgraduate Studies (Ongoing)</p>
+                        <p class="cert-desc">Rigorous postgraduate curriculum focusing on advanced computing systems, systems engineering, design analysis, and architectures.</p>
+                        <span class="cert-status-hint"><i class="fa-solid fa-hourglass-half"></i> Candidate Program</span>
+                    </div>
+
+                    <!-- Cert 2: Advanced Git Concepts -->
+                    <a href="advanced_git_concepts.pdf" target="_blank" rel="noopener noreferrer" class="cert-card-link-wrapper">
+                        <div class="cert-card glass-panel magnetic-target">
+                            <div class="cert-icon">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <h3 class="cert-title">Advanced Git Concepts</h3>
+                            <p class="cert-issuer">GitHub Developer Studies</p>
+                            <p class="cert-desc">Advanced version control workflows, repository structures, branching models, and collaboration systems.</p>
+                            <span class="cert-action-hint">View Certificate <i class="fa-solid fa-up-right-from-square"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Cert 3: Machine Learning -->
+                    <a href="machine_learning.pdf" target="_blank" rel="noopener noreferrer" class="cert-card-link-wrapper">
+                        <div class="cert-card glass-panel magnetic-target">
+                            <div class="cert-icon">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <h3 class="cert-title">Machine Learning</h3>
+                            <p class="cert-issuer">AI & Algorithms Specialization</p>
+                            <p class="cert-desc">Fundamentals of supervised/unsupervised algorithms, prediction modeling, and datasets processing pipelines.</p>
+                            <span class="cert-action-hint">View Certificate <i class="fa-solid fa-up-right-from-square"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME SECTION -->
+        <section id="resume" class="resume-section" data-section="resume">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">06 / THE ARCHIVIST'S SCROLL</span>
+                    <h2 class="section-title">Curriculum Vitae</h2>
+                </div>
+                <div class="resume-card glass-panel">
+                    <div class="resume-content">
+                        <div class="resume-icon-wrapper">
+                            <i class="fa-solid fa-scroll resume-main-icon"></i>
+                        </div>
+                        <div class="resume-text-wrapper">
+                            <h3 class="resume-card-title">Academic & Professional Blueprint</h3>
+                            <p class="resume-card-desc">Download or view my detailed resume to learn more about my academic coursework, programming credentials, and development experience.</p>
+                        </div>
+                        <div class="resume-actions">
+                            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary magnetic-target"><i class="fa-solid fa-eye"></i> View Resume</a>
+                            <a href="resume.pdf" download="Shreya_Shetty_Resume.pdf" class="btn btn-primary magnetic-target"><i class="fa-solid fa-download"></i> Download Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section" data-section="contact">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">07 / SANCTUARY GATE</span>
+                    <h2 class="section-title">Drop By To Chat</h2>
+                </div>
+
+                <div class="contact-grid">
+                    
+                    <!-- Left Card: Social & Clipboard email -->
+                    <div class="contact-card info-column glass-panel">
+                        <h3 class="column-title">Message In A Bottle</h3>
+                        <p class="card-text">Whether you want to talk about computer science theory, web development projects, or have a collaborative idea in mind, let's connect!</p>
+                        
+                        <!-- Clipboard Email Copy Box -->
+                        <div class="clipboard-box glass-panel">
+                            <span class="email-address">15shreyashetty@gmail.com</span>
+                            <button id="copy-email-btn" class="copy-btn magnetic-target" data-email="15shreyashetty@gmail.com" aria-label="Copy email">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-methods">
+                            <a href="mailto:15shreyashetty@gmail.com" class="contact-method-item magnetic-target">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>15shreyashetty@gmail.com</span>
+                            </a>
+                            <div class="contact-method-item">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                                <span>India / Remote</span>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://github.com/shreyashetty15" target="_blank" rel="noopener noreferrer" class="social-link-item magnetic-target" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/shreya-shetty-770247305" target="_blank" rel="noopener noreferrer" class="social-link-item magnetic-target" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://codepen.io" target="_blank" rel="noopener noreferrer" class="social-link-item magnetic-target" aria-label="CodePen"><i class="fa-brands fa-codepen"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Right Card: Friendly form inputs -->
+                    <div class="contact-card form-column glass-panel">
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                            <input type="hidden" name="access_key" value="6fff9fab-a627-4562-8500-e8cf16ede4fe">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="name" name="name" required class="form-input">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <span class="form-line"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" required class="form-input">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <span class="form-line"></span>
+                                </div>
+                            </div>
+                            <div class="form-group msg-group">
+                                <textarea id="message" name="message" required class="form-input" rows="5"></textarea>
+                                <label for="message" class="form-label">What's on your mind?</label>
+                                <span class="form-line"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary form-submit magnetic-target">
+                                Send Message <i class="fa-solid fa-leaf"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <span class="footer-copy">&copy; 2026 Shreya. Handcrafted inside a quiet forest sanctuary.</span>
+            <a href="#hero" class="back-to-top magnetic-target"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE PROJECT PREVIEW MODAL SYSTEM -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-card glass-panel">
+            <button class="modal-close magnetic-target" id="modal-close" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-grid">
+                <div class="modal-image-col">
+                    <div class="modal-mock-img" id="modal-preview-bg">
+                        <i id="modal-preview-icon" class="fa-solid"></i>
+                    </div>
+                </div>
+                <div class="modal-info-col">
+                    <div class="modal-tags" id="modal-tags"></div>
+                    <h3 class="modal-title" id="modal-title"></h3>
+                    <p class="modal-desc" id="modal-desc"></p>
+                    
+                    <div class="modal-highlights">
+                        <h4 class="highlights-title">Project Highlights</h4>
+                        <ul class="highlights-list" id="modal-highlights-list"></ul>
+                    </div>
+
+                    <div class="modal-links">
+                        <a href="#" class="modal-link-btn btn-secondary magnetic-target" id="modal-source" target="_blank"><i class="fa-brands fa-github"></i> GitHub Source</a>
+                        <a href="#" class="modal-link-btn btn-primary magnetic-target" id="modal-live" target="_blank">Launch Site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Foreground Canvas for floating leaves (layered above content) -->
+    <canvas id="fg-canvas"></canvas>
+
+    <!-- Lenis Smooth Scroll Library -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <!-- GSAP Core and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
