@@ -6,47 +6,77 @@
 const projectDatabase = {
     bank: {
         title: "Bank Management System",
-        desc: "A menu-driven console application engineered in C. Handles account record operations with modular file system structures to ensure persistent ledger logging and secure user validation.",
-        tags: ["C Programming", "File I/O Operations", "Data Processing", "Console Systems"],
+        desc: "A robust, menu-driven console application engineered in C. Handles account record operations with modular file system structures to ensure persistent ledger logging and secure user validation.",
+        tags: ["C Programming", "File Handling", "Algorithms", "Console Systems"],
         highlights: [
-            "Engineered structural data structures to model bank account attributes",
-            "Implemented persistent file handling routines for secure transaction history",
+            "Engineered structured record data models to handle multi-attribute bank accounts",
+            "Implemented persistent binary file handling routines for secure transaction logging",
             "Created responsive menu-driven CLI offering balances, deposits, and queries",
             "Optimized records updates using sequential scan and rewrite algorithms"
         ],
         icon: "fa-building-columns",
         gradient: "linear-gradient(135deg, #DFE6E2 0%, #CCD9D2 100%)",
-        source: "#",
+        source: "https://github.com/ShreyaShettyyy/bank-management-system.git",
         live: "#"
     },
     foodify: {
         title: "Foodify",
-        desc: "A gorgeous, responsive food ordering website showcasing a modern culinary digital menu. Integrated with frontend cart systems and intuitive layout transitions.",
+        desc: "A gorgeous, responsive food ordering website showcasing a modern culinary digital menu. Integrated with frontend cart systems, interactive dish filters, and administrative management capabilities.",
         tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
         highlights: [
             "Crafted a mobile-first responsive frontend layout with vanilla CSS grid/flex structures",
             "Programmed client-side interactive cart math adding, removing, and updating selections",
-            "Developed neat animative search filters matching dishes dynamically",
-            "Designed stunning high-resolution food mock overlays styling responsive grids"
+            "Developed dynamic animative search filters matching dishes dynamically",
+            "Integrated administrative dashboard for managing menu items and tracking order states"
         ],
         icon: "fa-bowl-food",
         gradient: "linear-gradient(135deg, #F5EAE0 0%, #EADAC2 100%)",
-        source: "#",
+        source: "https://github.com/ShreyaShettyyy/foodify.git",
         live: "#"
     },
     signbridge: {
         title: "SignBridge",
-        desc: "An AI-powered sign language gesture detection project using computer vision and machine learning models to capture gestural vectors in real-time.",
-        tags: ["Python", "Computer Vision", "Machine Learning", "Mediapipe"],
+        desc: "An AI-powered sign language gesture detection application that uses webcam input and computer vision to translate hand gestures into text in real-time.",
+        tags: ["Python", "Computer Vision", "Machine Learning", "MediaPipe", "OpenCV"],
         highlights: [
             "Constructed gesture recognition models matching joint land-marking coordinates",
-            "Integrated real-time webcam video parsing using python OpenCV pipelines",
-            "Tuned model prediction algorithms to decrease false classifications by 18%",
-            "Built interactive translation visual cards reflecting detected signals"
+            "Integrated real-time webcam video parsing using Python OpenCV pipelines",
+            "Employed MediaPipe hand landmark tracking for lightweight, high-accuracy classification",
+            "Built interactive translation visual display reflecting detected characters and gestures"
         ],
         icon: "fa-hands-asl-interpreting",
         gradient: "linear-gradient(135deg, #E2ECF5 0%, #C4D7E8 100%)",
-        source: "#",
+        source: "https://github.com/ShreyaShettyyy/SignBridge.git",
+        live: "#"
+    },
+    relate: {
+        title: "Relate",
+        desc: "A machine learning based recommendation system that discovers product relationships and generates personalized recommendations from customer purchase patterns.",
+        tags: ["Python", "Machine Learning", "Scikit-learn", "Recommendation System", "Data Science"],
+        highlights: [
+            "Engineered recommendation algorithms analyzing complex customer transaction associations",
+            "Discovered high-confidence item relationships and buying behaviors across user baskets",
+            "Trained personalized prediction models to generate accurate, high-relevance product recommendations",
+            "Constructed scalable data processing workflows optimized for rapid recommendation inference"
+        ],
+        icon: "fa-diagram-project",
+        gradient: "linear-gradient(135deg, #EBE6F5 0%, #D2C4E8 100%)",
+        source: "https://github.com/ShreyaShettyyy/Relate",
+        live: "#"
+    },
+    alumniconnect: {
+        title: "AlumniConnect",
+        desc: "A comprehensive web platform designed to foster engagement and networking among alumni. Features an interactive alumni directory, a career board for job opportunities, mentorship programs, community feeds, and integrated chat, providing a robust ecosystem to keep the alumni community connected and thriving.",
+        tags: ["HTML5", "CSS3", "JavaScript", "Full Stack", "Community Platform", "Networking"],
+        highlights: [
+            "Engineered interactive alumni directory with multi-attribute filtering and discovery",
+            "Designed a dedicated career board enabling job postings, tracking, and direct application workflows",
+            "Built community feeds, discussions, and event RSVP systems for active alumni engagement",
+            "Integrated mentorship pairing workflows and real-time chat for alumni connection"
+        ],
+        icon: "fa-people-roof",
+        gradient: "linear-gradient(135deg, #E0F2E9 0%, #C3E7D3 100%)",
+        source: "https://github.com/ShreyaShettyyy/AlumniConnect",
         live: "#"
     }
 };
@@ -995,30 +1025,43 @@ function initNavbarScroll() {
     const menu = document.querySelector('.nav-menu');
     
     if (toggle && menu) {
-        toggle.addEventListener('click', () => {
-            const isMenuFlex = menu.style.display === 'flex';
-            menu.style.display = isMenuFlex ? 'none' : 'flex';
-            if (!isMenuFlex) {
-                menu.style.flexDirection = 'column';
-                menu.style.position = 'absolute';
-                menu.style.top = '100%';
-                menu.style.left = '0';
-                menu.style.width = '100%';
-                menu.style.background = 'var(--glass-bg)';
-                menu.style.borderBottom = '1px solid var(--glass-border)';
-                menu.style.padding = '20px 40px';
-                menu.style.backdropFilter = 'blur(20px)';
-                menu.style.gap = '15px';
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('mobile-open');
+            const icon = toggle.querySelector('i');
+            if (icon) {
+                if (menu.classList.contains('mobile-open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
         
         // Auto-close menu on nav links clicked (mobile view)
         menu.querySelectorAll('a').forEach(l => {
             l.addEventListener('click', () => {
-                if (window.innerWidth < 768) {
-                    menu.style.display = 'none';
+                menu.classList.remove('mobile-open');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
                 }
             });
+        });
+
+        // Close when clicking outside of menu
+        document.addEventListener('click', (e) => {
+            if (menu.classList.contains('mobile-open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('mobile-open');
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
         });
     }
 }
@@ -1122,8 +1165,14 @@ function initProjectModal() {
             });
 
             // Connect links
-            document.getElementById('modal-source').href = data.source;
-            document.getElementById('modal-live').href = data.live;
+            const sourceLink = document.getElementById('modal-source');
+            if (sourceLink) {
+                sourceLink.href = data.source;
+            }
+            const liveLink = document.getElementById('modal-live');
+            if (liveLink) {
+                liveLink.style.display = 'none';
+            }
 
             // Trigger Overlay Open
             modal.classList.add('active');

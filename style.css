@@ -416,12 +416,32 @@ body.cursor-hover .custom-cursor-leaf svg {
     box-shadow: 0 4px 15px rgba(145, 184, 149, 0.12);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .menu-toggle {
     display: none;
     background: none;
-    border: none;
+    border: 1px solid var(--glass-border);
     color: var(--text-primary);
-    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.menu-toggle:hover {
+    border-color: var(--accent-sage);
+    color: var(--accent-sage);
+    background: var(--bg-secondary);
+    transform: scale(1.08);
 }
 
 /* Music Toggle Button Inside Navbar */
@@ -436,6 +456,8 @@ body.cursor-hover .custom-cursor-leaf svg {
     align-items: center;
     justify-content: center;
     font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
 }
 
 .music-toggle-btn:hover {
@@ -1428,73 +1450,85 @@ section {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 22px;
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 20px;
 }
 
 .form-group {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     width: 100%;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .form-input {
     width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1.5px solid var(--bg-darker);
-    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 14px 16px;
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 15px;
     outline: none;
-    transition: var(--transition-smooth);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.form-label {
-    position: absolute;
-    left: 0;
-    top: 8px;
-    font-size: 15px;
+.form-input::placeholder {
     color: var(--text-secondary);
-    pointer-events: none;
-    transition: var(--transition-smooth);
+    opacity: 0.55;
+    font-size: 14px;
 }
 
-.form-line {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 1.5px;
-    background-color: var(--accent-sage);
-    transition: var(--transition-smooth);
-}
-
-/* Floating dynamics */
-.form-input:focus ~ .form-label,
-.form-input:valid ~ .form-label {
-    top: -18px;
-    font-size: 12px;
-    color: var(--accent-sage);
-    font-weight: 600;
-}
-
-.form-input:focus ~ .form-line {
-    left: 0;
-    width: 100%;
+.form-input:hover {
+    border-color: var(--glass-border-hover);
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .form-input:focus {
-    border-bottom-color: rgba(0,0,0,0.02);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: var(--accent-sage);
+    box-shadow: 0 0 0 3px rgba(145, 184, 149, 0.22), inset 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.msg-group {
-    margin-top: 10px;
+textarea.form-input {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* Light Theme Styling for Inputs */
+body:not(.dark-theme) .form-input {
+    background: rgba(0, 0, 0, 0.035);
+    border: 1.5px solid rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+body:not(.dark-theme) .form-input:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--accent-sage);
+}
+
+body:not(.dark-theme) .form-input:focus {
+    background: #FFFFFF;
+    border-color: var(--accent-sage);
+    box-shadow: 0 0 0 3px rgba(145, 184, 149, 0.25);
 }
 
 .form-submit {
@@ -1502,6 +1536,8 @@ section {
     border: none;
     background-color: var(--text-primary);
     color: var(--bg-main);
+    cursor: pointer;
+    margin-top: 6px;
 }
 
 /* =========================================================================
@@ -1699,35 +1735,54 @@ section {
     transform: translateY(-3px);
 }
 
-/* RESPONSIVE STYLES */
+/* RESPONSIVE STYLES (TABLET & MOBILE SCREEN PERFECTION) */
 @media (max-width: 992px) {
+    .nav-container {
+        padding: 0 24px;
+    }
+
+    section {
+        padding: 90px 24px;
+    }
+
     .bento-grid {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
+        gap: 20px;
     }
     
     .col-span-2 {
         grid-column: span 1;
     }
     
-    .skills-bento {
+    .skills-grid-new {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
     
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .modal-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
     }
     
     .modal-image-col {
         min-height: 180px;
+        height: 180px;
     }
     
     .certifications-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
     }
 }
 
@@ -1737,29 +1792,500 @@ section {
     }
     
     .custom-cursor-leaf {
-        display: none;
+        display: none !important;
     }
-    
+
+    /* Navbar on Mobile */
+    .nav-container {
+        padding: 0 18px;
+    }
+
+    .navbar {
+        padding: 16px 0;
+    }
+
+    .nav-logo {
+        font-size: 26px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
     .nav-menu {
         display: none;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-main);
+        background: rgba(18, 31, 23, 0.96);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border-bottom: 1px solid var(--glass-border);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 20px 28px 20px;
+        gap: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        z-index: 999;
     }
-    
-    .menu-toggle {
+
+    .nav-menu.mobile-open {
+        display: flex;
+        animation: slideDownMobile 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .nav-link {
+        font-size: 16px;
+        padding: 10px 14px;
+        border-radius: 8px;
         display: block;
+        width: 100%;
     }
-    
+
+    .nav-link:hover, .nav-link:focus {
+        background: rgba(145, 184, 149, 0.1);
+    }
+
+    .nav-btn {
+        margin-top: 6px;
+        text-align: center;
+        width: 100%;
+        display: block;
+        padding: 12px 20px;
+    }
+
+    /* Hero Section on Mobile */
     .hero-section {
-        padding-top: 120px;
+        padding: 110px 18px 40px 18px;
+        min-height: auto;
+        padding-bottom: 70px;
     }
-    
+
+    .hero-badge {
+        font-size: 11px;
+        padding: 6px 14px;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .hero-title {
+        font-size: clamp(30px, 9vw, 44px);
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        padding: 0 4px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .separator-spacer {
+        height: 50px;
+    }
+
+    /* Common Section Adjustments */
+    section {
+        padding: 60px 16px;
+    }
+
+    .section-header {
+        margin-bottom: 35px;
+        text-align: left;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .section-tag {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    /* Bento Cards */
+    .bento-card {
+        padding: 24px 18px;
+        border-radius: 16px;
+    }
+
+    .bento-card-title {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .bento-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .traits-cloud {
+        gap: 8px;
+    }
+
+    .trait-tag {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .bento-stats-grid {
+        gap: 10px;
+    }
+
+    .bento-stat-num {
+        font-size: 32px;
+    }
+
+    .bento-stat-lbl {
+        font-size: 10px;
+    }
+
+    /* Projects Grid */
+    .project-filters {
+        gap: 8px;
+        margin-bottom: 30px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .project-image-wrapper {
+        height: 170px;
+    }
+
+    .project-info {
+        padding: 20px 16px;
+    }
+
+    .project-name {
+        font-size: 19px;
+    }
+
+    .project-description {
+        font-size: 13.5px;
+        margin-bottom: 18px;
+    }
+
+    /* Skills Grid */
+    .skills-column {
+        padding: 24px 18px;
+        border-radius: 16px;
+    }
+
+    .column-title {
+        font-size: 19px;
+        margin-bottom: 22px;
+    }
+
+    .skill-desc {
+        font-size: 12.5px;
+    }
+
+    /* Timeline Section */
+    .timeline-wrapper {
+        padding: 10px 0;
+    }
+
+    .timeline-progress-line {
+        left: 12px;
+    }
+
+    .timeline-item {
+        margin-left: 32px;
+        padding: 20px 16px;
+        margin-bottom: 24px;
+        border-radius: 16px;
+        transform: translateY(15px);
+    }
+
+    .timeline-dot {
+        left: -27px;
+        width: 14px;
+        height: 14px;
+        top: 22px;
+    }
+
+    .timeline-date {
+        font-size: 12px;
+    }
+
+    .milestone-title {
+        font-size: 17px;
+    }
+
+    .milestone-sub {
+        font-size: 13px;
+    }
+
+    .milestone-text {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* Honors & Certifications */
+    .honor-feature-card {
+        padding: 20px 16px !important;
+        margin-bottom: 1.8rem !important;
+        border-radius: 16px !important;
+    }
+
+    .honor-icon {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 1.5rem !important;
+        border-radius: 14px !important;
+    }
+
+    .cert-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .cert-title {
+        font-size: 18px;
+    }
+
+    .cert-desc {
+        font-size: 13px;
+    }
+
+    /* Resume Section */
+    .resume-section {
+        padding: 60px 16px;
+    }
+
+    .resume-card {
+        padding: 26px 18px;
+        border-radius: 16px;
+    }
+
+    .resume-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    .resume-card-title {
+        font-size: 20px;
+    }
+
+    .resume-card-desc {
+        font-size: 13.5px;
+    }
+
+    .resume-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .resume-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Contact Section */
+    .info-column, .form-column {
+        padding: 24px 18px;
+        border-radius: 16px;
+    }
+
+    .column-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        font-size: 13.5px;
+        margin-bottom: 22px;
+    }
+
+    .clipboard-box {
+        padding: 12px 14px;
+        margin-bottom: 22px;
+    }
+
+    .email-address {
+        font-size: 13px;
+        word-break: break-all;
+    }
+
+    .contact-methods {
+        gap: 16px;
+        margin-bottom: 25px;
+    }
+
+    .contact-method-item {
+        font-size: 14px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-link-item {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+
     .form-row {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
-    
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-input {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .form-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Modal System */
+    .modal-card {
+        width: 94%;
+        max-height: 86vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 28px 18px 20px 18px;
+        border-radius: 18px;
+    }
+
+    .modal-close {
+        top: 14px;
+        right: 14px;
+        font-size: 20px;
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .modal-image-col {
+        min-height: 140px;
+        height: 140px;
+    }
+
+    .modal-mock-img {
+        font-size: 48px;
+    }
+
+    .modal-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .modal-desc {
+        font-size: 13.5px;
+        margin-bottom: 18px;
+    }
+
+    .highlights-title {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .highlights-list li {
+        font-size: 13px;
+    }
+
+    .modal-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .modal-link-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 30px 16px;
+    }
+
     .footer-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
         text-align: center;
+    }
+
+    .footer-copy {
+        font-size: 12px;
+    }
+}
+
+/* Small Handheld Screens (<= 400px) */
+@media (max-width: 400px) {
+    .nav-container {
+        padding: 0 12px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .bento-stat-num {
+        font-size: 26px;
+    }
+
+    .bento-stat-lbl {
+        font-size: 9px;
+    }
+
+    .timeline-item {
+        margin-left: 26px;
+        padding: 16px 12px;
+    }
+
+    .timeline-dot {
+        left: -22px;
+    }
+
+    .email-address {
+        font-size: 11.5px;
     }
 }
 
